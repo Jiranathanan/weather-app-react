@@ -13,20 +13,24 @@ function App() {
   useEffect( () => {
     // what we want to happen after rendering
     // fetch the database information the API call of weather
-    fetchData('london');
+    fetchData('wrexham');
   }, [])
 
   const fetchData = async(city) => {
-    const APIKEY = process.env.REACT_APP_WEATHER_API
-    // axios is a library that makes request to the backend
-    const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}`)
-    console.log(result)
-    setAllData({
-      city: result.data.name,
-      country: result.data.sys.country,
-      temperature: result.data.main.temp 
-    })
-
+    // try catch error handling
+    try {
+      const APIKEY = process.env.REACT_APP_WEATHER_API
+      // axios is a library that makes request to the backend
+      const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}`)
+      console.log(result)
+      setAllData({
+        city: result.data.name,
+        country: result.data.sys.country,
+        temperature: result.data.main.temp 
+      })
+    } catch (e) {
+      console.log('API not loaded correctly')
+    }
   }
 
   return (
