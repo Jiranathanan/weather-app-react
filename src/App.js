@@ -13,7 +13,7 @@ function App() {
   useEffect( () => {
     // what we want to happen after rendering
     // fetch the database information the API call of weather
-    fetchData('wrexham');
+    fetchData('bangkok');
   }, [])
 
   const fetchData = async(city) => {
@@ -21,7 +21,7 @@ function App() {
     try {
       const APIKEY = process.env.REACT_APP_WEATHER_API
       // axios is a library that makes request to the backend
-      const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}`)
+      const result = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKEY}&units=metric`)
       console.log(result)
       setAllData({
         city: result.data.name,
@@ -34,14 +34,16 @@ function App() {
   }
 
   return (
+    <main>
     <div className='App'>
-    <h1>Test Successful</h1>
-    <h2>API: {process.env.REACT_APP_WEATHER_API}</h2>
-    <button onClick={() => console.log("Click!!!!!")}>Click for more</button>
-    <h3>City: {allData.city}</h3>
-    <h3>Country: {allData.country}</h3>
-    <h2>Temp: {allData.temperature} F</h2>
+      <h1>Test Successful</h1>
+      <h2>API: {process.env.REACT_APP_WEATHER_API}</h2>
+      <button onClick={() => console.log("Click!!!!!")}>Click for more</button>
+      <h3>City: {allData.city}</h3>
+      <h3>Country: {allData.country}</h3>
+      <h2>Temp: {allData.temperature}° Celcius</h2>
     </div>
+   </main>
   )
 }
 
