@@ -8,7 +8,11 @@ function App() {
   const [allData, setAllData] = useState({
     city: '',
     country: '',
-    temperature: ''
+    temperature: '',
+    humidity: '',
+    minTemperature: '',
+    maxTemperature: '',
+    icon: [] 
   })
 
   useEffect( () => {
@@ -27,8 +31,13 @@ function App() {
       setAllData({
         city: result.data.name,
         country: result.data.sys.country,
-        temperature: result.data.main.temp 
+        temperature: result.data.main.temp,
+        humidity: result.data.main.humidity,
+        minTemperature: result.data.main.temp_min,
+        maxTemperature: result.data.main.temp_max,
+        icon: result.data.weather 
       })
+      console.log(allData.icon)
     } catch (e) {
       console.log('API not loaded correctly')
     }
@@ -46,6 +55,7 @@ function App() {
     // console.log(search)
   }
 
+
   return (
     <main>
     <div className='App'>
@@ -55,10 +65,21 @@ function App() {
         <button style={{marginLeft: 5}}>Search</button>
       </form>
       <section>
-        {/* <h2>API: {process.env.REACT_APP_WEATHER_API}</h2> */}
+        { allData.icon ? allData.icon.map((item) => <img key={item.id} src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`} />)
+        : null}
         <h3>City: {allData.city}</h3>
         <h3>Country: {allData.country}</h3>
         <h2>Temp: {allData.temperature}° Celcius</h2>
+
+        <div>
+          <h4>Min: {allData.minTemperature}</h4>
+        </div>
+        <div>
+          <h4>Max: {allData.maxTemperature}</h4>
+        </div>
+        <div>
+          <h4>humidity: {allData.humidity}</h4>
+        </div>
       </section>
     </div>
    </main>
