@@ -1,6 +1,35 @@
-.App {
+
+body {
+  background: rgb(34,193,195);
+  background: linear-gradient(90deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
   text-align: center;
 }
+
+.form {
+  background: rgba(255,255,255, 0.3);
+}
+
+input {
+  border-radius: 20px;
+  outline: none;
+  border: transparent 1px;
+  padding: 10px;
+  margin: 10px 5px;
+  font-weight: 500;
+}
+
+button {
+  border-radius: 20px;
+  outline: none;
+  border: transparent 1px;
+  color: white;
+  background-color: darkslategray;
+  padding: 10px;
+  margin: 10px 5px;
+  font-weight: 500;
+
+}
+
 
 .App-logo {
   height: 40vmin;

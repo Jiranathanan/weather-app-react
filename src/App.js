@@ -58,11 +58,11 @@ function App() {
 
   return (
     <main>
-    <div className='App'>
+    <div className='form'> 
       <h1>Enter City Name</h1>
       <form onSubmit={handleSubmit}>
-        <input value={search} type='text' name='city' placeholder='city name' onChange={handleChange} />
-        <button style={{marginLeft: 5}}>Search</button>
+        <input value={search} type='text' name='city' placeholder='Location' onChange={handleChange} />
+        <button >Search</button>
       </form>
       <section>
         { allData.icon ? allData.icon.map((item) => <img key={item.id} src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`} />)
