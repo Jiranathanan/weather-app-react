@@ -37,14 +37,14 @@ function App() {
         maxTemperature: result.data.main.temp_max,
         icon: result.data.weather 
       })
-      console.log(allData.icon)
+      // console.log(allData.icon)
     } catch (e) {
       console.log('API not loaded correctly')
     }
   }
 
   const handleSubmit = (e) => {
-    console.log(search)
+    // console.log(search)
     e.preventDefault()
     fetchData(search)
   }
@@ -59,26 +59,32 @@ function App() {
   return (
     <main>
     <div className='form'> 
-      <h1>Enter City Name</h1>
+      <h1>Enter Location</h1>
       <form onSubmit={handleSubmit}>
         <input value={search} type='text' name='city' placeholder='Location' onChange={handleChange} />
         <button >Search</button>
       </form>
       <section>
-        { allData.icon ? allData.icon.map((item) => <img key={item.id} src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`} />)
+          {allData.icon ? allData.icon.map((item) => (
+          <div className='weather-icon' key={item.id}>
+            <img key={item.id} src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`} />
+          </div>
+          ))
         : null}
-        <h3>City: {allData.city}</h3>
-        <h3>Country: {allData.country}</h3>
-        <h2>Temp: {allData.temperature}° Celcius</h2>
+        <div className='weather-description'>
+          <h1>{allData.city}</h1>
+          <h3>{allData.country}</h3>
+          <h1>{allData.temperature} °c</h1>
 
-        <div>
-          <h4>Min: {allData.minTemperature}</h4>
-        </div>
-        <div>
-          <h4>Max: {allData.maxTemperature}</h4>
-        </div>
-        <div>
-          <h4>humidity: {allData.humidity}</h4>
+          <div>
+            <h4>Min: {allData.minTemperature} °c</h4>
+          </div>
+          <div>
+            <h4>Max: {allData.maxTemperature} °c</h4>
+          </div>
+          <div>
+            <h4>humidity: {allData.humidity}</h4>
+          </div>
         </div>
       </section>
     </div>

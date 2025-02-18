@@ -6,10 +6,25 @@ body {
 }
 
 .form {
-  background: rgba(255,255,255, 0.6);
+  background: rgba(55,55,55, 0.3);
   border-radius: 20px;
-  padding: 10px 15px;
+  padding-top: 5px;
   margin: 20px 30px;
+}
+
+.weather-description {
+  background: rgba(220, 220, 220, 0.95);
+  border-radius: 0 0 20px 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.weather-icon {
+  background: darkslategrey;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  margin: 10px auto 15px auto; 
 }
 
 input {
@@ -37,6 +52,18 @@ button {
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+@media screen and (min-width: 768px) {
+  .weather-description {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 30px;
+
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
